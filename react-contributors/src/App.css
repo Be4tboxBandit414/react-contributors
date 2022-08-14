@@ -1,16 +1,16 @@
+#App {
+  height: 100%;
+}
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  grid-template-rows: auto auto 1fr;
+  grid-gap: 8px;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background: #444;
 }
 
 .App-header {
@@ -28,11 +28,115 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#title {
+  grid-row: 1;
+  background-color: steelblue;
+  grid-column: 1 / -1;
+  padding: 8px;
+  text-align: center;
+  color: white;
+}
+
+#listReview {
+  grid-column: 1;
+  grid-row: 3;
+
+  background: #eee;
+
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  overflow-y: hidden;
+}
+
+.list {
+  min-height: 0;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+}
+
+.list .contributor {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 6px -3px black;
+  padding: 8px;
+  background: white;
+}
+
+.list .contributor:not(:last-of-type) {
+  margin-bottom: 8px;
+}
+
+.list .object-preview img {
+  width: 100%;
+}
+
+#detail {
+  grid-column: 2;
+  grid-row: 3;
+  padding: 8x;
+  display: flex;
+  background: #ddd;
+  overflow: hidden;
+}
+
+.contributor-info {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 420px;
+  grid-template-rows: auto minmax(0, 1fr);
+  background: #fff;
+  box-shadow: 0 4px 12 px -3px black;
+}
+
+.contributor-info > * {
+  padding: 8px;
+}
+
+.contributor-info header {
+  grid-row: 1;
+  grid-column: 1 / -1;
+  background: steelblue;
+  color: white;
+  text-shadow: 1px 1px 2px black;
+  border-bottom: 1px solid black;
+  font-size: 1.4rem;
+}
+
+.contributor-info .contributor-details {
+  grid-row: 2;
+  grid-column: 1;
+  min-height: 0;
+  overflow-y: scroll;
+  font-size: 1.2rem;
+  display: grid;
+  grid-gap: 4px 12px;
+  grid-template-columns: max-content minmax(0, 1fr);
+  grid-template-rows: repeat(auto-fill);
+}
+
+.contributor-info .contributor-details .title {
+  grid-column: 1;
+  font-weight: 900;
+}
+
+.contributor-info .contributor-details .content {
+  grid-column: 2;
+  font-weight: 100;
+}
+
+.contributor-info .contributor-details .avatar {
+  grid-row: 2;
+  grid-column: 2;
+  padding: 8px;
+  overflow-y: scroll;
+}
+
+.contributor-info img {
+  width: 100%;
+}
+
+.contributor-info img:not(:last-of-type) {
+  margin-bottom: 8px;
 }
